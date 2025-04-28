@@ -54,6 +54,7 @@ class Tree:
             return None
 
     def _find(self, data, node):
+        """ Helper method to recursively find a node with specific data. """
         if data == node.data:
             return node
         elif (data < node.data and node.left is not None):
@@ -62,28 +63,31 @@ class Tree:
             return self._find(data, node.right)
 
     def deleteTree(self):
+        """ Method to delete the tree by setting the root to None. """
         self.root = None
 
     def printTree(self):
+        """ Method to print the tree nodes using inorder traversal. """
         if self.root is not None:
             self._printInorderTree(self.root)
 
     def _printInorderTree(self, node):
+        """ Helper method for inorder traversal (Left -> Root -> Right). """
         if node is not None:
             self._printInorderTree(node.left)
             print(str(node.data) + ' ')
             self._printInorderTree(node.right)
 
     def _printPreorderTree(self, node):
+        """ Helper method for preorder traversal (Root -> Left -> Right). """
         if node is not None:
             print(str(node.data) + ' ')
             self._printPreorderTree(node.left)
             self._printPreorderTree(node.right)
 
     def _printPostorderTree(self, node):
+        """ Helper method for postorder traversal (Left -> Right -> Root). """
         if node is not None:
             self._printPostorderTree(node.left)
             self._printPostorderTree(node.right)
             print(str(node.data) + ' ')
-
-
